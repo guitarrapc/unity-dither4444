@@ -8,16 +8,16 @@ class TextureModifier : AssetPostprocessor
     {
         var importer = (assetImporter as TextureImporter);
 
-        importer.textureType = TextureImporterType.GUI;
+        importer.textureType = TextureImporterType.Advanced;
 
-        if (assetPath.EndsWith ("Dither.png")) {
+        if (assetPath.EndsWith ("Dither.png") || assetPath.EndsWith("Dither.tga")) {
             importer.textureFormat = TextureImporterFormat.RGBA32;
         }
     }
 
     void OnPostprocessTexture (Texture2D texture)
     {
-        if (!assetPath.EndsWith ("Dither.png")) {
+        if (!assetPath.EndsWith ("Dither.png") || !assetPath.EndsWith("Dither.tga")) {
             return;
         }
 
